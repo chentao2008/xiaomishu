@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>产品查询 - 小米数管理系统</title>
+    <link rel="stylesheet" href="assets/css/style.css?v=20260529-33" />
+  </head>
+  <body class="inventory-search-page">
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand art-brand">乐意纺织</div>
+      </header>
+      <main class="container">
+        <section class="search-panel">
+          <form id="searchForm" class="search-box">
+            <input id="keyword" placeholder="搜索布料名称、颜色、仓库、货架" />
+            <button aria-label="查询" type="submit"></button>
+          </form>
+          <div id="msg" class="message"></div>
+          <div id="emptyState" class="empty-state">恭喜你，库存已经卖完了</div>
+          <div id="stockCards" class="stock-cards"></div>
+        </section>
+      </main>
+      <footer class="bottom-actions">
+        <a class="btn secondary" href="home.html">返回首页</a>
+        <a class="btn primary" href="product-entry.html">库存录入</a>
+      </footer>
+    </div>
+    <script src="assets/js/api.js?v=20260529-33"></script>
+    <script src="assets/js/product-search.js?v=20260529-33"></script>
+  </body>
+</html>

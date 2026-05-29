@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>登录 - 小米数管理系统</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <main class="login-wrap">
+      <section class="panel login-card">
+        <h1 class="page-title">乐意纺织</h1>
+        <p class="muted">输入账号密码后自动进入对应页面</p>
+        <form id="loginForm" class="form">
+          <div class="field">
+            <label for="username">账号</label>
+            <input id="username" name="username" autocomplete="username" required />
+          </div>
+          <div class="field">
+            <label for="password">密码</label>
+            <input id="password" name="password" type="password" autocomplete="current-password" required />
+          </div>
+          <button class="btn primary" type="submit">登录</button>
+          <div id="msg" class="message"></div>
+        </form>
+      </section>
+    </main>
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/login.js"></script>
+  </body>
+</html>

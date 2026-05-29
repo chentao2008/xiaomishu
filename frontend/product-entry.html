@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>产品录入 - 小米数管理系统</title>
+    <link rel="stylesheet" href="assets/css/style.css?v=20260529-29" />
+  </head>
+  <body class="inventory-entry-page">
+    <div class="app-shell entry-shell">
+      <header class="topbar">
+        <div class="brand">录入库存</div>
+      </header>
+      <main class="container">
+        <section class="inventory-panel">
+          <form id="entryForm">
+            <div class="inventory-table-wrap">
+              <table class="inventory-entry-table">
+                <colgroup>
+                  <col class="col-name" />
+                  <col class="col-color" />
+                  <col class="col-qty" />
+                  <col class="col-shelf" />
+                  <col class="col-action" />
+                </colgroup>
+                <thead>
+                  <tr>
+                    <th>布料名称</th>
+                    <th>颜色</th>
+                    <th>数量</th>
+                    <th>货架</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody id="entryRows"></tbody>
+              </table>
+            </div>
+            <div class="actions">
+              <button class="btn primary" type="submit">确定录入</button>
+            </div>
+            <div id="msg" class="message"></div>
+          </form>
+        </section>
+      </main>
+      <footer class="bottom-actions">
+        <button class="btn primary" id="bulkOpen" type="button">批量录入</button>
+        <a class="btn secondary" href="product-search.html">库存查询</a>
+      </footer>
+    </div>
+    <div class="bulk-dialog" id="bulkDialog" hidden>
+      <div class="bulk-box">
+        <div class="bulk-title">批量录入</div>
+        <textarea id="bulkText" placeholder="布料名称 颜色 数量"></textarea>
+        <div class="bulk-actions">
+          <button class="btn secondary" id="bulkCancel" type="button">取消</button>
+          <button class="btn primary" id="bulkApply" type="button">填入表格</button>
+        </div>
+      </div>
+    </div>
+    <div class="alert-dialog" id="alertDialog" hidden>
+      <div class="alert-box">
+        <div id="alertText" class="alert-text"></div>
+        <button class="btn primary" id="alertOk" type="button">确定</button>
+      </div>
+    </div>
+    <script src="assets/js/api.js?v=20260529-29"></script>
+    <script src="assets/js/product-entry.js?v=20260529-29"></script>
+  </body>
+</html>

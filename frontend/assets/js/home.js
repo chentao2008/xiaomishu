@@ -1,0 +1,2 @@
+const session = requireLogin();
+bindLogout();

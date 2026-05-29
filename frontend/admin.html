@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>后台管理 - 小米数管理系统</title>
+    <link rel="stylesheet" href="assets/css/style.css?v=20260529-13" />
+  </head>
+  <body class="admin-page">
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="admin-title">小米数后台管理系统</div>
+        <nav class="nav">
+          <a href="product-entry.html">产品录入</a>
+          <a href="product-search.html">产品查询</a>
+          <button data-logout>退出</button>
+        </nav>
+      </header>
+      <main class="container">
+        <section class="panel">
+          <form id="userForm" class="form">
+            <div class="grid">
+              <div class="field">
+                <label for="username">员工账号</label>
+                <input id="username" required />
+              </div>
+              <div class="field">
+                <label for="password">初始密码</label>
+                <input id="password" type="password" required />
+              </div>
+              <div class="field">
+                <label for="warehouse">绑定仓库</label>
+                <select id="warehouse" required>
+                  <option value="贵阳">贵阳</option>
+                  <option value="成都">成都</option>
+                  <option value="南通">南通</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="role">权限</label>
+                <select id="role">
+                  <option value="staff">员工</option>
+                  <option value="admin">管理员</option>
+                </select>
+              </div>
+            </div>
+            <div class="actions">
+              <button class="btn primary" type="submit">创建账号</button>
+              <div id="msg" class="message"></div>
+            </div>
+          </form>
+        </section>
+        <section class="panel">
+          <h2 class="page-title">账号列表</h2>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>账号</th>
+                  <th>密码</th>
+                  <th>仓库</th>
+                  <th>权限</th>
+                  <th>删除</th>
+                </tr>
+              </thead>
+              <tbody id="userRows"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="assets/js/api.js?v=20260529-13"></script>
+    <script src="assets/js/admin.js?v=20260529-13"></script>
+  </body>
+</html>
