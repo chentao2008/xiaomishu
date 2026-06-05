@@ -31,3 +31,9 @@ class FabricTailOut(BaseModel):
 
     model_config = ConfigDict(from_attributes=True)
 
+
+class FabricTailPage(BaseModel):
+    total: int
+    page: int
+    page_size: int
+    items: list[FabricTailOut]

@@ -1,12 +1,12 @@
 from typing import Annotated
 
 from fastapi import APIRouter, Depends, HTTPException, status
-from sqlalchemy import or_, select
+from sqlalchemy import func, or_, select
 
 from app.api.deps import DbSession, get_current_user
 from app.models.fabric_tail import FabricTail
 from app.models.user import User
-from app.schemas.fabric_tail import FabricTailCreate, FabricTailOut
+from app.schemas.fabric_tail import FabricTailCreate, FabricTailOut, FabricTailPage
 
 
 router = APIRouter(prefix="/fabric-tails", tags=["尾部小米数"])
@@ -33,14 +33,18 @@ def create_fabric_tail(
     return item
 
 
-@router.get("", response_model=list[FabricTailOut])
+@router.get("", response_model=FabricTailPage)
 def search_fabric_tails(
     db: DbSession,
     _: Annotated[User, Depends(get_current_user)],
     keyword: str = "",
-    limit: int = 50,
-) -> list[FabricTail]:
-    stmt = select(FabricTail).order_by(FabricTail.id.desc()).limit(min(limit, 200))
+    page: int = 1,
+    page_size: int = 20,
+) -> FabricTailPage:
+    page = max(page, 1)
+    page_size = min(max(page_size, 1), 200)
+    offset = (page - 1) * page_size
+    stmt = select(FabricTail).order_by(FabricTail.id.desc())
     if keyword:
         like = f"%{keyword}%"
         stmt = stmt.where(
@@ -52,11 +56,12 @@ def search_fabric_tails(
                 FabricTail.warehouse_location.ilike(like),
             )
         )
-    items = list(db.scalars(stmt))
-    if keyword and not items:
+    total = db.scalar(select(func.count()).select_from(stmt.subquery())) or 0
+    items = list(db.scalars(stmt.offset(offset).limit(page_size)))
+    if keyword and total == 0:
         normalized_keyword = normalize_search_text(keyword)
-        all_items = list(db.scalars(select(FabricTail).order_by(FabricTail.id.desc()).limit(min(limit, 200))))
-        items = [
+        all_items = list(db.scalars(select(FabricTail).order_by(FabricTail.id.desc())))
+        normalized_items = [
             item
             for item in all_items
             if normalized_keyword
@@ -65,7 +70,9 @@ def search_fabric_tails(
                 f"{item.product_code}{item.product_name}{item.color}{item.batch_no}{item.warehouse_location}"
             )
         ]
-    return items
+        total = len(normalized_items)
+        items = normalized_items[offset : offset + page_size]
+    return FabricTailPage(total=total, page=page, page_size=page_size, items=items)
 
 
 @router.delete("/{item_id}", status_code=status.HTTP_204_NO_CONTENT)

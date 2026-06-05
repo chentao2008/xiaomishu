@@ -20,12 +20,26 @@
           <div id="msg" class="message"></div>
           <div id="emptyState" class="empty-state">恭喜你，库存已经卖完了</div>
           <div id="stockCards" class="stock-cards"></div>
+          <div class="pager" id="pager" hidden>
+            <button class="pager-btn" id="prevPage" type="button">上一页</button>
+            <span class="pager-info" id="pageInfo"></span>
+            <button class="pager-btn" id="nextPage" type="button">下一页</button>
+          </div>
         </section>
       </main>
       <footer class="bottom-actions">
         <a class="btn secondary" href="home.html">返回首页</a>
         <a class="btn primary" href="product-entry.html">库存录入</a>
       </footer>
+    </div>
+    <div class="delete-dialog" id="deleteDialog" hidden>
+      <div class="delete-box">
+        <div id="deleteText" class="delete-text"></div>
+        <div class="delete-actions">
+          <button class="btn secondary" id="deleteCancel" type="button">取消</button>
+          <button class="btn danger" id="deleteConfirm" type="button">确认删除</button>
+        </div>
+      </div>
     </div>
     <script src="assets/js/api.js?v=20260529-33"></script>
     <script src="assets/js/product-search.js?v=20260529-33"></script>
