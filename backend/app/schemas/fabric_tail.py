@@ -37,3 +37,16 @@ class FabricTailPage(BaseModel):
     page: int
     page_size: int
     items: list[FabricTailOut]
+
+
+class FabricTailHistoryRow(BaseModel):
+    date: str
+    warehouse: str
+    created_count: int
+    deleted_count: int
+
+
+class FabricTailHistoryOut(BaseModel):
+    created_total: int
+    deleted_total: int
+    rows: list[FabricTailHistoryRow]

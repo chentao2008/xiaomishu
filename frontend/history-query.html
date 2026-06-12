@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>数据查询 - 小米数管理系统</title>
+    <link rel="stylesheet" href="assets/css/style.css?v=20260612-history" />
+  </head>
+  <body class="admin-page history-query-page">
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="admin-title">小米数后台管理系统</div>
+        <nav class="nav">
+          <a href="home.html">首页</a>
+          <a href="product-entry.html">产品录入</a>
+          <a href="product-search.html">产品查询</a>
+          <button data-logout>退出</button>
+        </nav>
+      </header>
+      <main class="container">
+        <section class="panel">
+          <h2 class="page-title">数据查询</h2>
+          <form id="historyForm" class="form history-form">
+            <div class="grid history-date-grid">
+              <div class="field">
+                <label for="startDate">开始日期</label>
+                <input id="startDate" type="date" />
+              </div>
+              <div class="field">
+                <label for="endDate">结束日期</label>
+                <input id="endDate" type="date" />
+              </div>
+            </div>
+            <div class="grid history-filter-grid">
+              <div class="field">
+                <label for="warehouse">仓库</label>
+                <select id="warehouse">
+                  <option value="">全部仓库</option>
+                  <option value="贵阳">贵阳</option>
+                  <option value="成都">成都</option>
+                  <option value="南通">南通</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="actionType">分类</label>
+                <select id="actionType">
+                  <option value="">全部行为</option>
+                  <option value="created">录入</option>
+                  <option value="deleted">删除</option>
+                </select>
+              </div>
+            </div>
+            <div class="actions">
+              <button class="btn primary" type="submit">查询</button>
+              <div id="msg" class="message"></div>
+            </div>
+          </form>
+        </section>
+        <section class="panel">
+          <div class="history-stats">
+            <div class="stat">
+              <span>录入数据</span>
+              <strong id="createdTotal">0</strong>
+            </div>
+            <div class="stat">
+              <span>删除数据</span>
+              <strong id="deletedTotal">0</strong>
+            </div>
+          </div>
+          <div class="table-wrap history-table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>日期</th>
+                  <th>仓库</th>
+                  <th>录入</th>
+                  <th>删除</th>
+                </tr>
+              </thead>
+              <tbody id="historyRows"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="assets/js/api.js?v=20260529-13"></script>
+    <script src="assets/js/history-query.js?v=20260612-history"></script>
+  </body>
+</html>

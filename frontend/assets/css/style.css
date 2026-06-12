@@ -550,6 +550,81 @@ a {
   font-size: 12px;
 }
 
+.admin-extra-actions {
+  display: grid;
+  margin-top: 14px;
+}
+
+.admin-extra-actions .btn {
+  min-height: 46px;
+  border-radius: 10px;
+}
+
+.history-query-page .nav {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.history-query-page .nav a,
+.history-query-page .nav button {
+  padding-inline: 6px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.history-query-page .page-title {
+  font-size: 34px;
+}
+
+.history-form .history-date-grid,
+.history-form .history-filter-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.history-form label {
+  font-size: 13px;
+}
+
+.history-form input,
+.history-form select {
+  min-height: 42px;
+  padding-inline: 8px;
+  font-size: 14px;
+}
+
+.history-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.history-stats .stat {
+  min-height: 68px;
+  padding: 10px 12px;
+  border-radius: 8px;
+}
+
+.history-stats .stat span {
+  color: #405168;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.history-stats .stat strong {
+  font-size: 30px;
+}
+
+.history-table-wrap table {
+  min-width: 320px;
+  table-layout: fixed;
+}
+
+.history-table-wrap th,
+.history-table-wrap td {
+  padding: 7px 4px;
+  font-size: 13px;
+}
+
 .page-title {
   margin-bottom: 14px;
   letter-spacing: 4px;
